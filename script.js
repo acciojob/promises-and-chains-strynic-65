@@ -1,5 +1,4 @@
-//your JS code here. If required.
-// Wait until DOM is loaded
+// Wait for the DOM to load
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("votingForm");
 
@@ -9,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("name").value.trim();
     const age = parseInt(document.getElementById("age").value.trim());
 
-    // Validation
+    // Validation: Check if inputs are empty or invalid
     if (!name || isNaN(age)) {
       alert("Please enter valid details.");
       return;
     }
 
-    // Create a Promise that resolves/rejects after 4 seconds
+    // Create and return a Promise
     new Promise((resolve, reject) => {
       setTimeout(() => {
         if (age > 18) {
@@ -33,3 +32,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+

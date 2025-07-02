@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Voting Eligibility</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voting Eligibility Form</title>
 </head>
 <body>
+
   <form id="votingForm">
-    <input type="text" id="name" placeholder="Enter your name" />
-    <input type="number" id="age" placeholder="Enter your age" />
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" placeholder="Enter your name" /><br /><br />
+
+    <label for="age">Age:</label><br />
+    <input type="number" id="age" placeholder="Enter your age" /><br /><br />
+
     <button type="submit" id="btn">Submit</button>
   </form>
 
-  <script src="script.js"></script> <!-- External JavaScript -->
+  <script src="script.js"></script>
+
 </body>
 </html>
-
