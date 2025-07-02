@@ -2,16 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("votingForm");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page reload
 
     const name = document.getElementById("name").value.trim();
     const age = parseInt(document.getElementById("age").value.trim());
 
+    // Validation: Check if inputs are empty or invalid
     if (!name || isNaN(age)) {
       alert("Please enter valid details.");
       return;
     }
 
+    // Create and handle the Promise
     new Promise((resolve, reject) => {
       setTimeout(() => {
         if (age > 18) {
@@ -21,13 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, 4000);
     })
-    .then((name) => {
-      alert(`Welcome, ${name}. You can vote.`);
+    .then((userName) => {
+      alert(`Welcome, ${userName}. You can vote.`);
     })
-    .catch((name) => {
-      alert(`Oh sorry ${name}. You aren't old enough.`);
+    .catch((userName) => {
+      alert(`Oh sorry ${userName}. You aren't old enough.`);
     });
   });
 });
+
 
 
