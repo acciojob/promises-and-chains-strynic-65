@@ -1,31 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("votingForm");
+  const btn = document.getElementById("btn");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent page reload
-
+  btn.addEventListener("click", () => {
     const name = document.getElementById("name").value.trim();
     const age = parseInt(document.getElementById("age").value.trim());
 
-    // Validation: Check if inputs are empty or invalid
+    // Validation
     if (!name || isNaN(age)) {
-      alert("Please enter valid details.");
+      alert("Please enter valid details");
       return;
     }
 
-    // Create and handle the Promise
+    // Step 1: Main promise (resolve if age > 18)
     new Promise((resolve, reject) => {
       setTimeout(() => {
         if (age > 18) {
-          resolve(name);
+          resolve({ name: name, age: age });
         } else {
           reject(name);
         }
       }, 4000);
     })
-    .then((userName) => {
-      alert(`Welcome, ${userName}. You can vote.`);
+
+    // Step 2: Extract name from object
+    .then((userObj) => {
+      return userObj.name;
     })
+
+    // Step 3: Create new object with extracted name
+    .then((userName) => {
+      return { voterName: userName };
+    })
+
+    // Final Step: Show alert with final object
+    .then((finalObj) => {
+      alert(`Welcome, ${finalObj.voterName}. You can vote.`);
+    })
+
+    // Handle rejection if age <= 18
     .catch((userName) => {
       alert(`Oh sorry ${userName}. You aren't old enough.`);
     });
